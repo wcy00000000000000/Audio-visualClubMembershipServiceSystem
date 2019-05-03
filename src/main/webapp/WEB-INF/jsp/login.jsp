@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Login</title>
@@ -63,6 +64,12 @@
     </div>
 </div>
 <script>
+    <%
+    if (request.getAttribute("warning") != null) {
+%>
+    alert('<%=request.getAttribute("warning")%>');
+    <%}%>
+
     function changeMode() {
         var isRegister = (document.getElementById("title").innerText === "Register")
         if (!isRegister) {
