@@ -46,7 +46,7 @@
         <%if (change) {%>
         <div class="card">
             <div class="card-body">
-                <form class="form-group" action="/user/modify" method="post">
+                <form class="form-group" action="/user/modify" method="post" onsubmit="return validate_form()">
                     <label for="password">
                         Password
                     </label>
@@ -79,7 +79,7 @@
                     <label for="tel">
                         Tel
                     </label>
-                    <input type="number" min="0" max="99999999999" class="form-control" id="tel" name="tel"
+                    <input type="number" class="form-control" id="tel" name="tel"
                            value="<%=member.getTel() == null ? "" : member.getTel() %>"/>
                     <label for="city">
                         City
@@ -136,6 +136,19 @@
 <script>
     function del() {
         window.location.href = "/user/delete?id=" + <%=member.getId()%>;
+    }
+
+    function validate_form() {
+        return CheckTel();
+    }
+
+    function CheckTel() {
+        var tel = document.getElementById('tel').value;
+        if (!(/^1[34578]\d{9}$/.test(tel))) {
+            alert("phone number is wrong");
+            return false;
+        }
+        return true;
     }
 </script>
 </body>

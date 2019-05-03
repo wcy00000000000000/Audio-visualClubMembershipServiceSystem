@@ -31,7 +31,7 @@ public class LoginLogoutRegisterController {
         ProductExample productExample = new ProductExample();
         productExample.setOrderByClause("release_date DESC");
         List<Product> products = productService.selectByExample(productExample);
-        modelAndView.addObject("products", products.subList(0, 8));
+        modelAndView.addObject("products", products);
         return modelAndView;
     }
 
