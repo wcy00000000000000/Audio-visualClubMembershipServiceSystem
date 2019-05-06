@@ -1,7 +1,6 @@
-<%@ page import="com.wcy.audio_visual_club_membership_service_system.pojo.Order" %>
+<%@ page import="com.wcy.audio_visual_club_membership_service_system.pojo.OrderInfo" %>
 <%@ page import="com.wcy.audio_visual_club_membership_service_system.pojo.OrderProduct" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.wcy.audio_visual_club_membership_service_system.pojo.OrderInfo" %>
 <%--
   Created by IntelliJ IDEA.
   User: WCY
@@ -11,7 +10,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% OrderInfo order = (OrderInfo) request.getAttribute("order");
-    List<OrderProduct> products = (List<OrderProduct>) request.getAttribute("products");%>
+    List<OrderProduct> products = (List<OrderProduct>) request.getAttribute("products");
+    double price = 0;%>
 <html>
 <head>
     <title>Order Detail</title>
@@ -56,6 +56,7 @@
                 <%}%>
                 <%
                     for (OrderProduct orderProduct : products) {
+                        price += orderProduct.getPrice() * orderProduct.getNumber();
                         if (order.getStatus().equals("new")) {
                 %>
                 <div class="card">
@@ -112,29 +113,31 @@
                 <div class="detail"><h5>Place:<%=order.getPlace()%>
                 </h5></div>
                 <%}%>
-                <%if (session.getAttribute("identity").equals("staff")) {%>
-                <button class="btn btn-primary" onclick="window.location.href = '/order/deliver?id=<%=order.getId()%>'">
-                    Deliver
-                </button>
-                <%}%>
+                <div class="detail">Total Price: <%=price%>
+                    <%if (session.getAttribute("identity").equals("staff")) {%>
+                    <button class="btn btn-primary"
+                            onclick="window.location.href = '/order/deliver?id=<%=order.getId()%>'">
+                        Deliver
+                    </button>
+                    <%}%>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    function modify(pid) {
-        var num = document.getElementById("number" + pid).value;
-        window.location.href = '/order/product/modify?id=<%=order.getId()%>&pid=' + pid + '&num=' + num;
-    }
-
-    function order() {
-        var place = document.getElementById("place").value;
-        if (place === '') {
-            alert("please fill in your address");
-            return;
+    <script>
+        function modify(pid) {
+            var num = document.getElementById("number" + pid).value;
+            window.location.href = '/order/product/modify?id=<%=order.getId()%>&pid=' + pid + '&num=' + num;
         }
-        window.location.href = '/order/submit?id=<%=order.getId()%>&place=' + place;
-    }
-</script>
+
+        function order() {
+            var place = document.getElementById("place").value;
+            if (place === '') {
+                alert("please fill in your address");
+                return;
+            }
+            window.location.href = '/order/submit?id=<%=order.getId()%>&place=' + place;
+        }
+    </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
-<%@ page import="com.wcy.audio_visual_club_membership_service_system.pojo.Order" %>
+<%@ page import="com.wcy.audio_visual_club_membership_service_system.pojo.OrderInfo" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.wcy.audio_visual_club_membership_service_system.pojo.OrderInfo" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: WCY
   Date: 2019/4/7

@@ -1,8 +1,9 @@
 package com.wcy.audio_visual_club_membership_service_system.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrderInfo {
+public class OrderInfo implements Serializable {
     private Integer id;
 
     private Integer memberId;

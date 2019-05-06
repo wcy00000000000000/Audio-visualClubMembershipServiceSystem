@@ -1,11 +1,8 @@
 package com.wcy.audio_visual_club_membership_service_system.service.impl;
 
 import com.wcy.audio_visual_club_membership_service_system.mapper.OrderInfoMapper;
-import com.wcy.audio_visual_club_membership_service_system.mapper.OrderInfoMapper;
 import com.wcy.audio_visual_club_membership_service_system.pojo.OrderInfo;
 import com.wcy.audio_visual_club_membership_service_system.pojo.OrderInfoExample;
-import com.wcy.audio_visual_club_membership_service_system.pojo.OrderInfo;
-import com.wcy.audio_visual_club_membership_service_system.service.OrderService;
 import com.wcy.audio_visual_club_membership_service_system.service.OrderService;
 import org.springframework.stereotype.Service;
 

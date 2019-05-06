@@ -51,7 +51,7 @@ public class LoginLogoutRegisterController {
             }
         }
         ModelAndView modelAndView = new ModelAndView("login");
-        modelAndView.addObject("warning","incorrect account or password");
+        modelAndView.addObject("warning", "incorrect account or password");
         return modelAndView;
     }
 
@@ -66,11 +66,11 @@ public class LoginLogoutRegisterController {
     public ModelAndView register(HttpSession session, @RequestParam("account") String account, @RequestParam("password") String password) {
         if (staffService.selectByPrimaryKey(account) != null) {
             ModelAndView modelAndView = new ModelAndView("login");
-            modelAndView.addObject("warning","account already exists");
+            modelAndView.addObject("warning", "account already exists");
             return modelAndView;
         } else if (memberService.selectByAccount(account) != null) {
             ModelAndView modelAndView = new ModelAndView("login");
-            modelAndView.addObject("warning","account already exists");
+            modelAndView.addObject("warning", "account already exists");
             return modelAndView;
         }
         Member member = new Member();
