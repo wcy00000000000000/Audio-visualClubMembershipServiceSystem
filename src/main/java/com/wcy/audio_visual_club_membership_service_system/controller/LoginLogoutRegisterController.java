@@ -78,7 +78,7 @@ public class LoginLogoutRegisterController {
         member.setPassword(password);
         memberService.insertSelective(member);
         session.setAttribute("identity", "member");
-        session.setAttribute("user", staffService.selectByPrimaryKey(account));
+        session.setAttribute("user", memberService.selectByPrimaryKey(account));
         return index();
     }
 }
